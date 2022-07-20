@@ -5,8 +5,6 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -27,8 +25,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
 
     }
@@ -42,8 +40,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
 
 
@@ -62,8 +60,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
 
 
@@ -79,8 +77,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
 
 
@@ -89,19 +87,17 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
 
-        List<User> users = new ArrayList<>();
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            users = session.createQuery("select p from User p", User.class).getResultList();
+            List<User> users = session.createQuery("select p from User p", User.class).getResultList();
             session.getTransaction().commit();
             return users;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
-        return users;
     }
 
     @Override
@@ -114,8 +110,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         }
 
     }
